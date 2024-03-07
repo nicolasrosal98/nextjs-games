@@ -5,7 +5,11 @@
  * @returns an array with the matching letters and null if not matched
  */
 
-function matchedLetters(targetWord: string, guessedArray: string[]): ((string | null)[] | number )[] {
+type Result = [(string | null)[], number]
+
+const expectedRes: Result = [['o', null, null, 'u'], 0]
+
+function matchedLetters(targetWord: string, guessedArray: string[]): Result {
     let missCount = 0;
     const targetLetters = targetWord.split("")
     const outputArray: (string | null)[] = Array<(string | null)>(targetWord.length).fill(null);
