@@ -60,6 +60,9 @@ export default function Hangman() {
       ) : (
         <h1>You Lost</h1>
       )}
+      {guessField.join("") === wordToGuess && (
+        <h1 className="text-8xl">You Won</h1>
+      )}
       <div className="w-2/5 flex flex-wrap justify-center items-center">
         {keyboard}
       </div>
