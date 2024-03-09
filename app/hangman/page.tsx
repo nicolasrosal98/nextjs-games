@@ -3,11 +3,18 @@
 import { SyntheticEvent, useState } from "react";
 import { words } from "./words";
 import { sample } from "lodash";
+import { matchedLetters } from "./helpers/matchedLetters";
 
 export default function Hangman() {
-  const [wordToGuess, setWordToGuess] = useState<string>("unrented");
+  const initWord = sample(words);
+  if (!initWord) {
+    throw new Error("no words in words array");
+  }
+
+  const [wordToGuess, setWordToGuess] = useState<string>(initWord);
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
   const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+  let [guessMatches, missCount] = matchedLetters(wordToGuess, guessedLetters);
 
   const resetGame = () => {
     const newRandomWord = sample(words);
@@ -23,6 +30,11 @@ export default function Hangman() {
     setGuessedLetters([...guessedLetters, e.currentTarget.innerHTML]);
   };
 
+  const guessField = guessMatches.map((guess, key) => {
+    let field = guess !== null ? guess : "_";
+    return field;
+  });
+
   const keyboard = alphabet.map((letter, key) => {
     return (
       <button
@@ -36,10 +48,14 @@ export default function Hangman() {
   });
 
   return (
-    <div className="h-screen font-sans bg-blue-100 flex flex-col items-center justify-evenly">
-      <h1 className="text-5xl text-center">Hangman</h1>
+    <div className="h-screen font-sans bg-blue-100 text-black flex flex-col items-center justify-evenly">
+      <h1 className="text-5xl text-center ">Hangman</h1>
+      <h1 className="flex items-center justify-center text-2xl">
+        {guessField.join(" ")}
+      </h1>
       <h1 className="text-2xl text-center">{guessedLetters.join(", ")}</h1>
       <h1 className="text-2xl text-center">{wordToGuess}</h1>
+      {missCount > 0 && <h1>Number of Misses: {missCount}</h1>}
       <div className="w-2/5 flex flex-wrap justify-center items-center">
         {keyboard}
       </div>
@@ -52,5 +68,3 @@ export default function Hangman() {
     </div>
   );
 }
-
-["#1b676b", "#519548", "#88c425", "#bef202", "#eafde6"];
