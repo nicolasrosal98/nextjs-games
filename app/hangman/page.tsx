@@ -55,7 +55,11 @@ export default function Hangman() {
       </h1>
       <h1 className="text-2xl text-center">{guessedLetters.join(", ")}</h1>
       <h1 className="text-2xl text-center">{wordToGuess}</h1>
-      {missCount > 0 && <h1>Number of Misses: {missCount}</h1>}
+      {missCount < 10 ? (
+        <h1>Number of Misses: {missCount}</h1>
+      ) : (
+        <h1>You Lost</h1>
+      )}
       <div className="w-2/5 flex flex-wrap justify-center items-center">
         {keyboard}
       </div>
