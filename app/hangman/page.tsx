@@ -1,17 +1,12 @@
 "use client";
 
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { words } from "./words";
 import { sample } from "lodash";
 import { matchedLetters } from "./helpers/matchedLetters";
 
 export default function Hangman() {
-  const initWord = sample(words);
-  if (!initWord) {
-    throw new Error("no words in words array");
-  }
-
-  const [wordToGuess, setWordToGuess] = useState<string>(initWord);
+  const [wordToGuess, setWordToGuess] = useState<string | null>(null);
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
   const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
   let [guessMatches, missCount] = matchedLetters(wordToGuess, guessedLetters);
@@ -31,6 +26,18 @@ export default function Hangman() {
       setGuessedLetters([...guessedLetters, e.currentTarget.innerHTML]);
     }
   };
+
+  // call reset game one second from now to avoid discrepancies
+  // between server and client renders induced by randomness
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      resetGame();
+    }, 1000);
+    function cleanUp() {
+      clearTimeout(timeoutId);
+    }
+    return cleanUp;
+  }, []);
 
   const guessField = guessMatches.map((guess) => {
     let field = guess !== null ? guess : "_";
