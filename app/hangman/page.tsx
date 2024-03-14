@@ -27,10 +27,12 @@ export default function Hangman() {
 
   const handleLetterPick = (e: SyntheticEvent) => {
     e.preventDefault();
-    setGuessedLetters([...guessedLetters, e.currentTarget.innerHTML]);
+    if (!guessedLetters.includes(e.currentTarget.innerHTML)) {
+      setGuessedLetters([...guessedLetters, e.currentTarget.innerHTML]);
+    }
   };
 
-  const guessField = guessMatches.map((guess, key) => {
+  const guessField = guessMatches.map((guess) => {
     let field = guess !== null ? guess : "_";
     return field;
   });
@@ -56,12 +58,13 @@ export default function Hangman() {
       <h1 className="text-2xl text-center">{guessedLetters.join(", ")}</h1>
       <h1 className="text-2xl text-center">{wordToGuess}</h1>
       {missCount < 10 ? (
-        <h1>Number of Misses: {missCount}</h1>
+        guessField.join("") === wordToGuess ? (
+          <h1 className="text-8xl">You Won</h1>
+        ) : (
+          <h1>Number of Misses: {missCount}</h1>
+        )
       ) : (
         <h1>You Lost</h1>
-      )}
-      {guessField.join("") === wordToGuess && (
-        <h1 className="text-8xl">You Won</h1>
       )}
       <div className="w-2/5 flex flex-wrap justify-center items-center">
         {keyboard}
