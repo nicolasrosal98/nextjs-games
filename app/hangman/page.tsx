@@ -52,8 +52,6 @@ export default function Hangman() {
       <h1 className="flex items-center justify-center text-2xl">
         {guessField.join(" ")}
       </h1>
-      <h1 className="text-2xl text-center">{guessedLetters.join(", ")}</h1>
-      <h1 className="text-2xl text-center">{wordToGuess}</h1>
       <WinStatus guessIsComplete={guessIsComplete} missCount={missCount} />
       <LetterKeyboard
         handleLetterPick={handleLetterPick}

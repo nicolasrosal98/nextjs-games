@@ -31,3 +31,21 @@ body {
     text-wrap: balance;
   }
 }
+
+.hangmanButton {
+  transition: all 1s;
+}
+
+.hangmanButton:hover {
+  transform: scale(1.1);
+}
+
+.hangmanButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: scale(0.9) rotate(360deg);
+} 
+
+.hangmanButton:disabled:hover {
+  outline: none;
+}

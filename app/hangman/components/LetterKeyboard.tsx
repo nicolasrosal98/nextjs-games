@@ -13,7 +13,7 @@ export function LetterKeyboard(props: LetterKeyboardProps) {
         disabled={isDisabled}
         key={key}
         onClick={() => props.handleLetterPick(letter)}
-        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-1"
+        className="hangmanButton bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-1"
       >
         {letter}
       </button>
