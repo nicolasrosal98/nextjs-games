@@ -1,15 +1,15 @@
 "use client";
 
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { words } from "./words";
 import { sample } from "lodash";
 import { matchedLetters } from "./helpers/matchedLetters";
 import WinStatus from "./components/WinStatus";
+import { LetterKeyboard } from "./LetterKeyboard";
 
 export default function Hangman() {
   const [wordToGuess, setWordToGuess] = useState<string | null>(null);
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
-  const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
   let [guessMatches, missCount] = matchedLetters(wordToGuess, guessedLetters);
 
   const resetGame = () => {
@@ -21,10 +21,9 @@ export default function Hangman() {
     setGuessedLetters([]);
   };
 
-  const handleLetterPick = (e: SyntheticEvent) => {
-    e.preventDefault();
-    if (!guessedLetters.includes(e.currentTarget.innerHTML)) {
-      setGuessedLetters([...guessedLetters, e.currentTarget.innerHTML]);
+  const handleLetterPick = (pickedLetter: string) => {
+    if (!guessedLetters.includes(pickedLetter)) {
+      setGuessedLetters([...guessedLetters, pickedLetter]);
     }
   };
 
@@ -47,18 +46,6 @@ export default function Hangman() {
 
   const guessIsComplete = guessField.join("") === wordToGuess;
 
-  const keyboard = alphabet.map((letter, key) => {
-    return (
-      <button
-        key={key}
-        onClick={handleLetterPick}
-        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-1"
-      >
-        {letter}
-      </button>
-    );
-  });
-
   return (
     <div className="h-screen font-sans bg-blue-100 text-black flex flex-col items-center justify-evenly">
       <h1 className="text-5xl text-center ">Hangman</h1>
@@ -68,9 +55,7 @@ export default function Hangman() {
       <h1 className="text-2xl text-center">{guessedLetters.join(", ")}</h1>
       <h1 className="text-2xl text-center">{wordToGuess}</h1>
       <WinStatus guessIsComplete={guessIsComplete} missCount={missCount} />
-      <div className="w-2/5 flex flex-wrap justify-center items-center">
-        {keyboard}
-      </div>
+      <LetterKeyboard handleLetterPick={handleLetterPick} />
       <button
         onClick={resetGame}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
