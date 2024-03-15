@@ -55,7 +55,10 @@ export default function Hangman() {
       <h1 className="text-2xl text-center">{guessedLetters.join(", ")}</h1>
       <h1 className="text-2xl text-center">{wordToGuess}</h1>
       <WinStatus guessIsComplete={guessIsComplete} missCount={missCount} />
-      <LetterKeyboard handleLetterPick={handleLetterPick} />
+      <LetterKeyboard
+        handleLetterPick={handleLetterPick}
+        guessedLetters={guessedLetters}
+      />
       <button
         onClick={resetGame}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"

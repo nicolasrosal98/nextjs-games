@@ -2,12 +2,15 @@
 type PickHandlerFunction = (pickedLetter: string) => void;
 type LetterKeyboardProps = {
   handleLetterPick: PickHandlerFunction;
+  guessedLetters: string[];
 };
 export function LetterKeyboard(props: LetterKeyboardProps) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
   const keyboard = alphabet.map((letter, key) => {
+    const isDisabled = props.guessedLetters.includes(letter);
     return (
       <button
+        disabled={isDisabled}
         key={key}
         onClick={() => props.handleLetterPick(letter)}
         className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded m-1"
