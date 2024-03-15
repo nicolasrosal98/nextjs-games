@@ -5,7 +5,7 @@ import { words } from "./words";
 import { sample } from "lodash";
 import { matchedLetters } from "./helpers/matchedLetters";
 import WinStatus from "./components/WinStatus";
-import { LetterKeyboard } from "./LetterKeyboard";
+import { LetterKeyboard } from "./components/LetterKeyboard";
 
 export default function Hangman() {
   const [wordToGuess, setWordToGuess] = useState<string | null>(null);
