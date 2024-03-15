@@ -4,6 +4,7 @@ import { SyntheticEvent, useEffect, useState } from "react";
 import { words } from "./words";
 import { sample } from "lodash";
 import { matchedLetters } from "./helpers/matchedLetters";
+import WinStatus from "./components/WinStatus";
 
 export default function Hangman() {
   const [wordToGuess, setWordToGuess] = useState<string | null>(null);
@@ -44,6 +45,8 @@ export default function Hangman() {
     return field;
   });
 
+  const guessIsComplete = guessField.join("") === wordToGuess;
+
   const keyboard = alphabet.map((letter, key) => {
     return (
       <button
@@ -64,15 +67,7 @@ export default function Hangman() {
       </h1>
       <h1 className="text-2xl text-center">{guessedLetters.join(", ")}</h1>
       <h1 className="text-2xl text-center">{wordToGuess}</h1>
-      {missCount < 10 ? (
-        guessField.join("") === wordToGuess ? (
-          <h1 className="text-8xl">You Won</h1>
-        ) : (
-          <h1>Number of Misses: {missCount}</h1>
-        )
-      ) : (
-        <h1>You Lost</h1>
-      )}
+      <WinStatus guessIsComplete={guessIsComplete} missCount={missCount} />
       <div className="w-2/5 flex flex-wrap justify-center items-center">
         {keyboard}
       </div>
