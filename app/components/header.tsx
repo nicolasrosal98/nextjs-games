@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <header>
       <nav className="hidden md:flex justify-around items-center h-[12vh]">
-        <div className="text-lg cursor-default">Nicolas Rosal</div>
+        <div className="text-2xl cursor-default">Nicolas Rosal</div>
         <div>
           <ul className="flex gap-8 list-none text-lg">
             <DesktopNavItem href="#about">About</DesktopNavItem>
@@ -23,7 +23,7 @@ export default function Header() {
         </div>
       </nav>
       <nav className="md:hidden flex justify-around items-center h-[12vh]">
-        <div className="text-lg cursor-default">Nicolas Rosal</div>
+        <div className="text-2xl cursor-default">Nicolas Rosal</div>
         <div className="relative inline-block">
           <HamburgerIcon menuOpen={menuOpen} onClick={toggleMenu} />
           <div
