@@ -26,50 +26,8 @@ html {
   scroll-behavior: smooth;
 }
 
-.hangmanButton {
-  transition: all 1s;
-}
-
-.hangmanButton:hover {
-  transform: scale(1.1);
-}
-
-.hangmanButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: scale(0.9) rotate(360deg);
-} 
-
-.hangmanButton:disabled:hover {
-  outline: none;
-}
-
 /* PROFILE */
 #profile {
   gap: 3.2rem;
   height: 80vh;
-}
-
-/* BUTTONS */
-.btn-color-1 {
-  border: black 0.1rem solid;
-  background: black;
-  color: white;
-}
-
-.btn-color-1:hover {
-  cursor: pointer;
-  background: rgb(68, 68, 68);
-}
-
-.btn-color-2 {
-  border: black 0.1rem solid;
-  background: none;
-}
-
-.btn-color-2:hover {
-  cursor: pointer;
-  background: black;
-  color: white;
-  border: black 0.1rem solid;
 }

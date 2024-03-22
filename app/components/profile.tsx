@@ -23,13 +23,13 @@ export default function Profile() {
           <p className="text-xl mb-4">Data Scientist</p>
           <div className="flex justify-center gap-4">
             <button
-              className="font-normal text-sm transition-all duration-200 ease-in-out py-2 w-32 rounded-full btn-color-2"
+              className="font-normal text-sm transition-all duration-200 ease-in-out py-2 w-32 rounded-full border border-black border-solid bg-transparent hover:bg-black text-black hover:text-white hover:border-black"
               onClick={() => window.open("/NicolasRosalCV.pdf")}
             >
               Download CV
             </button>
             <button
-              className="font-normal text-sm transition-all duration-300 ease-in-out py-2 w-32 rounded-full btn-color-1"
+              className="font-normal text-sm transition-all duration-300 ease-in-out py-2 w-32 rounded-full border border-green-700 bg-green-700 text-white hover:bg-green-900"
               onClick={() => (location.href = "#contact")}
             >
               Contact Info
