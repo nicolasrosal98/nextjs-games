@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -28,11 +26,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background: white
-}
-
 .hangmanButton {
   transition: all 1s;
 }
@@ -49,4 +42,34 @@ body {
 
 .hangmanButton:disabled:hover {
   outline: none;
+}
+
+/* PROFILE */
+#profile {
+  gap: 3.2rem;
+  height: 80vh;
+}
+
+/* BUTTONS */
+.btn-color-1 {
+  border: black 0.1rem solid;
+  background: black;
+  color: white;
+}
+
+.btn-color-1:hover {
+  cursor: pointer;
+  background: rgb(68, 68, 68);
+}
+
+.btn-color-2 {
+  border: black 0.1rem solid;
+  background: none;
+}
+
+.btn-color-2:hover {
+  cursor: pointer;
+  background: black;
+  color: white;
+  border: black 0.1rem solid;
 }
