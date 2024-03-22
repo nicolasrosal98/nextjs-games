@@ -61,7 +61,7 @@ function DesktopNavItem(props: DesktopNavItemProps) {
       <button className="transition duration-300 ease-in-out transform hover:-translate-y-1">
         <a
           href={props.href}
-          className="transition duration-300 ease text-black no-underline hover:text-green-500"
+          className="transition duration-300 ease text-black no-underline hover:text-green-700"
         >
           {props.children}
         </a>
@@ -82,7 +82,7 @@ function MobileNavItem(props: MobileNavItemProps) {
       <button className="transition duration-300 ease-in-out transform hover:-translate-y-1">
         <a
           href={props.href}
-          className="block py-2 px-4 text-lg text-black no-underline transition-all duration-300 ease-in-out hover:text-green-500"
+          className="block py-2 px-4 text-lg text-black no-underline transition-all duration-300 ease-in-out hover:text-green-700"
           onClick={props.onClick}
         >
           {props.children}
