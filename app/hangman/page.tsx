@@ -46,16 +46,23 @@ export default function Hangman() {
 
   const guessIsComplete = guessField.join("") === wordToGuess;
 
+  const disableAllKeys = guessIsComplete || missCount >= 10;
+
   return (
     <div className="h-screen font-sans bg-blue-100 text-black flex flex-col items-center justify-evenly">
       <h1 className="text-5xl text-center ">Hangman</h1>
       <h1 className="flex items-center justify-center text-2xl">
         {guessField.join(" ")}
       </h1>
-      <WinStatus guessIsComplete={guessIsComplete} missCount={missCount} />
+      <WinStatus
+        wordToGuess={wordToGuess!}
+        guessIsComplete={guessIsComplete}
+        missCount={missCount}
+      />
       <LetterKeyboard
         handleLetterPick={handleLetterPick}
         guessedLetters={guessedLetters}
+        disableAllKeys={disableAllKeys}
       />
       <button
         onClick={resetGame}

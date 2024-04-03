@@ -3,11 +3,14 @@ type PickHandlerFunction = (pickedLetter: string) => void;
 type LetterKeyboardProps = {
   handleLetterPick: PickHandlerFunction;
   guessedLetters: string[];
+  disableAllKeys: boolean;
 };
 export function LetterKeyboard(props: LetterKeyboardProps) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
   const keyboard = alphabet.map((letter, key) => {
-    const isDisabled = props.guessedLetters.includes(letter);
+    const isDisabled =
+      props.disableAllKeys || props.guessedLetters.includes(letter);
+
     return (
       <button
         disabled={isDisabled}
