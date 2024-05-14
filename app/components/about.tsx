@@ -7,57 +7,60 @@ export default function About() {
     <div>
       <section id="about">
         <p className="text-center pt-10">Get To Know More</p>
-        <h1 className="text-4xl text-center py-3">About Me</h1>
-        <div className="section-container">
-          <div className="md:flex hidden h-400 w-400 my-auto mx-0">
+        <h1 className="text-4xl text-center">About Me</h1>
+        <div className="flex gap-16 h-4/5">
+          <div className="md:flex hidden min-h-1500 min-w-1500 my-auto mx-0">
             <Image
-              src="/images/about-pic.svg"
-              height={400}
-              width={400}
+              src="/images/about-pic.jpg"
+              height={1500}
+              width={1500}
               alt="About Picture"
-              className="about-pic"
+              className="rounded-2xl filter grayscale"
             />
           </div>
-        </div>
-        <div className="about-details-container">
-          <div className="about-containers">
-            <div className="details-container">
-              <Image
-                src="/images/experience-pic.svg"
-                height={400}
-                width={400}
-                alt="Experience Icon"
-                className="icon"
-              />
-              <h3>Experience</h3>
-              <p>
-                2+ years <br />
-                Data Analysis
-              </p>
-            </div>
-            <div className="details-container">
-              <Image
-                src="/images/education-pic.svg"
-                height={400}
-                width={400}
-                alt="Education Icon"
-                className="icon"
-              />
-              <h3>Education</h3>
-              <p>
-                BSc Management Science <br />
-                Data Analysis
-              </p>
+          <div className="flex justify-center flex-col">
+            <div className="flex mb-8 mt-8 gap-8">
+              <div className="flex flex-col justify-center items-center p-10 rounded-lg border border-gray-300 text-center gap-4">
+                <Image
+                  src="/images/experience-pic.png"
+                  height={50}
+                  width={40}
+                  alt="Experience Icon"
+                  className="cursor-pointer h-8"
+                />
+                <h3>Experience</h3>
+                <p>
+                  2+ years <br />
+                  Data Analysis
+                </p>
+              </div>
+              <div className="flex flex-col justify-center items-center p-10 rounded-lg border border-gray-300 text-center gap-4">
+                <Image
+                  src="/images/education-pic.png"
+                  height={50}
+                  width={35}
+                  alt="Education Icon"
+                  className="cursor-pointer h-8"
+                />
+                <h3>Education</h3>
+                <p>
+                  BSc Management Science <br />
+                  Data Analysis
+                </p>
+              </div>
             </div>
             <div className="text-container">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Praesentium eius distinctio a accusantium impedit, minus
-                deleniti magnam inventore quibusdam nulla vel quo dicta
-                assumenda veniam cumque natus, tenetur aperiam. Accusantium fuga
-                repellat, vel quod repellendus unde doloremque nulla harum
-                possimus esse ipsum tempora consequatur et perferendis dolores
-                placeat voluptates ex.
+                Experienced data analyst skilled at leveraging data to optimise
+                processes and enhance customer experiences. Demonstrated success
+                in increasing data accessibility by 30% and reducing dashboard
+                creation time by 50%. Seeking opportunities to apply machine
+                learning solutions to real-world challenges. Possessing a strong
+                technical background, coupled with effective stakeholder
+                management, project coordination, communication, and
+                interpersonal skills. Committed to continuous learning and
+                staying up-to-date with the latest technologies to drive success
+                in both present and future endeavors.
               </p>
             </div>
           </div>
@@ -65,10 +68,10 @@ export default function About() {
         <Image
           src="/images/arrow.png"
           alt="arrow icon"
-          className="icon arrow"
-          height={120}
-          width={120}
-          onClick={() => (location.href = "./experience")}
+          className="cursor-pointer h-8 arrow"
+          height={40}
+          width={40}
+          onClick={() => (location.href = "#experience")}
         />
       </section>
     </div>
